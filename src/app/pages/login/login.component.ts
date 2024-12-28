@@ -2,9 +2,8 @@ import { Component, signal } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'login',
@@ -16,6 +15,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+		ReactiveFormsModule
   ],
 })
 export class LoginComponent {
@@ -24,5 +24,6 @@ export class LoginComponent {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
+	emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 }
 

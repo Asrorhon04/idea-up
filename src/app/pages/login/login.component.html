@@ -10,7 +10,13 @@
           <div class="relative">
             <mat-form-field appearance="outline" class="w-full custom-form-field">
               <mat-icon matPrefix class="text-gray-500">email</mat-icon>
-              <input matInput placeholder="Email address or user name">
+              <input type="email" matInput [formControl]="emailFormControl" placeholder="Email address or user name">
+              @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+              <mat-error>Please enter a valid email address</mat-error>
+              }
+              @if (emailFormControl.hasError('required')) {
+              <mat-error>Email is <strong>required</strong></mat-error>
+              }
             </mat-form-field>
           </div>
           <div class="relative">
